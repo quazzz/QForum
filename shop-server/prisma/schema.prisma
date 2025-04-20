@@ -2,17 +2,18 @@ generator client {
     provider = "prisma-client-js"
 }
 datasource db {
-    provider = "mongodb"
+    provider = "postgresql"
     url = env("DATABASE_URL")
+    directUrl = env("DIRECT_URL")
 }
 model User {
-    id Int  @id @map("_id") 
+    id String  @id @default(uuid()) 
     email String @unique
     createdAt DateTime @default(now())
     password String 
 }
 model Post {
-    id String @id @map("_id") @default(auto()) @db.ObjectId
+    id String @id @default(uuid())
     title String 
     content String
     author String?

@@ -20,7 +20,7 @@ export class AuthService {
             data: {
                 email: userDto.email,
                 password: userDto.password,
-                id: Date.now()
+                id: String(Date.now())
             }
         })
         return newUser
